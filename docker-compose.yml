@@ -1,0 +1,42 @@
+version: "3"
+
+# All available services
+services:
+  # Storage
+  postgres_container:
+    container_name: "curious-moon"
+    restart: "always"
+    image: postgres
+    env_file:
+      - ./config/postgres.env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+      - ~/_Projects/2020-02-18_POSTGRES_moon/curious_moon_book/c-moon-vol:/c-moon-vol
+      #- ./services/postgres/:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+    networks:
+      - postgres-compose-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - ./config/pgadmin.env
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - 5050:80
+    depends_on:
+      - postgres_container
+    networks:
+      - postgres-compose-network
+    restart: unless-stopped
+
+networks:
+  postgres-compose-network:
+    driver: bridge
+
+# Volumes to persist data
+volumes:
+  postgres_volume:
+  pgadmin:

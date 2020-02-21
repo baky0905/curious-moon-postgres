@@ -1,0 +1,29 @@
+
+# Created by https://www.gitignore.io/api/data
+# Edit at https://www.gitignore.io/?templates=data
+
+### Data ###
+*.csv
+*.dat
+*.efx
+*.gbr
+*.key
+*.pps
+*.ppt
+*.pptx
+*.sdf
+*.tax2010
+*.vcf
+*.xml
+*.zip
+# End of https://www.gitignore.io/api/data
+
+###Book and other not relevant folders ###
+
+book/
+data/
+c-moon-vol/data
+code/
+.DS_Store
+
+!c-moon-vol/data/master_plan.csv
