@@ -65,14 +65,14 @@ drop table if exists events;
 create table events
 (
     id serial primary key,
-    time_stamp timestamptz not null,
-    title varchar (500),
+    time_stamp timestamp not null,
+    title varchar(500),
     description text,
-    event_type_id int,
-    spass_type_id int,
-    target_id int,
-    team_id int,
-    request_id int
+    event_type_id int references event_types(id),
+    target_id int references targets(id),
+    team_id int references teams(id),
+    request_id int references requests(id),
+    spass_type_id int references spass_types(id)
 );
 
 insert into events

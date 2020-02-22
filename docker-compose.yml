@@ -14,7 +14,11 @@ services:
       - ~/_Projects/2020-02-18_POSTGRES_moon/curious_moon_book/c-moon-vol:/c-moon-vol
       #- ./services/postgres/:/docker-entrypoint-initdb.d/
     ports:
-      - 5432:5432
+      - 5431:5432
+      #- 5430:5432
+    #expose:
+    # - "5431"
+    # - "5430"
     networks:
       - postgres-compose-network
 
